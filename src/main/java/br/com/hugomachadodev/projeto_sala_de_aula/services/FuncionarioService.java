@@ -1,63 +1,51 @@
 package br.com.hugomachadodev.projeto_sala_de_aula.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.hugomachadodev.projeto_sala_de_aula.exception.ResourceNotFoundException;
 import br.com.hugomachadodev.projeto_sala_de_aula.model.Funcionario;
+import br.com.hugomachadodev.projeto_sala_de_aula.repositories.FuncionarioRepository;
 
 @Service
 public class FuncionarioService {
 
-    public Funcionario findbyId(String id){
-        Funcionario funcionario = new Funcionario(
-            "Funcionario Teste- Busca por ID",
-            "00821167123",
-            "funcionario.silva@estudante.ifgoiano.edu.br",
-            "64009876543",
-            "Analista SR",
-            "CLT"
-        );
+    @Autowired
+    FuncionarioRepository funcionarioRepository;
 
-        return funcionario;
+
+    public Funcionario findbyId(Long id){
+        return funcionarioRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Não Há Registros para esse ID"));
     }
 
     public List<Funcionario> findAll(){
-        List<Funcionario> funcionarios = new ArrayList<>();
-
-        for(int i = 0; i < 10; i++){
-            Funcionario funcionario = mockFuncionario(i);
-            funcionarios.add(funcionario);
-        }
-        return funcionarios;
+        return funcionarioRepository.findAll();
     }
 
     public Funcionario create(Funcionario funcionario) {
-		return funcionario;
+		return funcionarioRepository.save(funcionario);
 	}
 
     public Funcionario update(Funcionario funcionario) {
-		return funcionario;
+        var entity = funcionarioRepository.findById(funcionario.getIdFuncionario()).orElseThrow(
+            ()->new ResourceNotFoundException("Não Há Registros para esse ID"));
+
+        entity.setNomeCompleto(funcionario.getNomeCompleto());
+        entity.setIdentificacao(funcionario.getIdentificacao());
+        entity.setEmailInstitucional(funcionario.getEmailInstitucional());
+        entity.setTelefone(funcionario.getTelefone());
+        entity.setCargo(funcionario.getCargo());
+        entity.setTipoVinculo(funcionario.getTipoVinculo());
+
+		return funcionarioRepository.save(entity);
 	}
 
-    public Funcionario delete(Funcionario funcionario) {
-		return funcionario;
+    public void delete(Long id) {
+		var entity = funcionarioRepository.findById(id).orElseThrow(
+            ()->new ResourceNotFoundException("Não Há Registros para esse ID"));
+        
+        funcionarioRepository.delete(entity);
 	}
-
-
-
-    private Funcionario mockFuncionario(int i) {
-        Funcionario funcionario = new Funcionario(
-            "Funcionario Teste "+ i +" Teste Mock",
-            "00821167123",
-            "func.silva@ifgoiano.edu.br",
-            "64009876543",
-            "Analista SR",
-            "CLT"
-        );
-
-        return funcionario;
-    }
 }
-
