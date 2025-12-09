@@ -10,6 +10,8 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import br.com.hugomachadodev.projeto_sala_de_aula.exception.ExceptionResponse;
+import br.com.hugomachadodev.projeto_sala_de_aula.exception.ForbidenServiceException;
+import br.com.hugomachadodev.projeto_sala_de_aula.exception.ResourceNotFoundException;
 import br.com.hugomachadodev.projeto_sala_de_aula.exception.UnauthorizedServiceException;
 import br.com.hugomachadodev.projeto_sala_de_aula.exception.UnsupportedServiceException;
 
@@ -40,5 +42,23 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
             ex.getMessage(),
             request.getDescription(false));
         return new ResponseEntity<>(exceptionResponse, HttpStatus.UNAUTHORIZED);
+    }
+
+    @ExceptionHandler(ForbidenServiceException.class)
+    public final ResponseEntity<ExceptionResponse> handleForbidenExceptions(Exception ex, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+            new Date(),
+            ex.getMessage(),
+            request.getDescription(false));
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.FORBIDDEN);
+    }
+    
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public final ResponseEntity<ExceptionResponse> handleNotFoundExceptions(Exception ex, WebRequest request) {
+        ExceptionResponse exceptionResponse = new ExceptionResponse(
+            new Date(),
+            ex.getMessage(),
+            request.getDescription(false));
+        return new ResponseEntity<>(exceptionResponse, HttpStatus.NOT_FOUND);
     }
 }
