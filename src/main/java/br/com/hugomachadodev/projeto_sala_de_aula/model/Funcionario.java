@@ -1,78 +1,106 @@
 package br.com.hugomachadodev.projeto_sala_de_aula.model;
 
-import java.util.UUID;
+import java.io.Serializable;
 
-public class Funcionario {
-    final UUID id_funcionario;
-    String nome_completo;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_funcionario")
+public class Funcionario implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long idFuncionario;
+
+    @Column(name = "nome_completo", nullable = false, length = 100)
+    String nomeCompleto;
+
+    @Column(name = "identificacao", nullable = false, length = 20)
     String identificacao;
-    String email_institucional;
+
+    @Column(name = "email_institucional", nullable = false, length = 60)
+    String emailInstitucional;
+
+    @Column(name = "telefone", nullable = false, length = 16)
     String telefone;
+
+    @Column(name = "cargo", nullable = false, length = 50)
     String cargo;
-    String tipo_vinculo;
 
-    public Funcionario(String nome_completo, String identificacao, String email_institucional,
-            String telefone, String cargo, String tipo_vinculo) {
-        this.id_funcionario = UUID.randomUUID();
-        this.nome_completo = nome_completo;
-        this.identificacao = identificacao;
-        this.email_institucional = email_institucional;
-        this.telefone = telefone;
-        this.cargo = cargo;
-        this.tipo_vinculo = tipo_vinculo;
+    @Column(name = "tipo_vinculo", nullable = false, length = 30)
+    String tipoVinculo;
+
+    public Funcionario(){}
+
+    public Long getIdFuncionario() {
+        return idFuncionario;
     }
 
-    public UUID getId_funcionario() {
-        return id_funcionario;
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
-    public String getNome_completo() {
-        return nome_completo;
+
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
-    public void setNome_completo(String nome_completo) {
-        this.nome_completo = nome_completo;
-    }
+
     public String getIdentificacao() {
         return identificacao;
     }
+
     public void setIdentificacao(String identificacao) {
         this.identificacao = identificacao;
     }
-    public String getEmail_institucional() {
-        return email_institucional;
+
+    public String getEmailInstitucional() {
+        return emailInstitucional;
     }
-    public void setEmail_institucional(String email_institucional) {
-        this.email_institucional = email_institucional;
+
+    public void setEmailInstitucional(String emailInstitucional) {
+        this.emailInstitucional = emailInstitucional;
     }
+
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     public String getCargo() {
         return cargo;
     }
+
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
-    public String getTipo_vinculo() {
-        return tipo_vinculo;
+
+    public String getTipoVinculo() {
+        return tipoVinculo;
     }
-    public void setTipo_vinculo(String tipo_vinculo) {
-        this.tipo_vinculo = tipo_vinculo;
+
+    public void setTipoVinculo(String tipoVinculo) {
+        this.tipoVinculo = tipoVinculo;
     }
 
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((id_funcionario == null) ? 0 : id_funcionario.hashCode());
-        result = prime * result + ((nome_completo == null) ? 0 : nome_completo.hashCode());
+        result = prime * result + ((idFuncionario == null) ? 0 : idFuncionario.hashCode());
+        result = prime * result + ((nomeCompleto == null) ? 0 : nomeCompleto.hashCode());
         result = prime * result + ((identificacao == null) ? 0 : identificacao.hashCode());
-        result = prime * result + ((email_institucional == null) ? 0 : email_institucional.hashCode());
+        result = prime * result + ((emailInstitucional == null) ? 0 : emailInstitucional.hashCode());
         result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
         result = prime * result + ((cargo == null) ? 0 : cargo.hashCode());
-        result = prime * result + ((tipo_vinculo == null) ? 0 : tipo_vinculo.hashCode());
+        result = prime * result + ((tipoVinculo == null) ? 0 : tipoVinculo.hashCode());
         return result;
     }
 
@@ -85,25 +113,25 @@ public class Funcionario {
         if (getClass() != obj.getClass())
             return false;
         Funcionario other = (Funcionario) obj;
-        if (id_funcionario == null) {
-            if (other.id_funcionario != null)
+        if (idFuncionario == null) {
+            if (other.idFuncionario != null)
                 return false;
-        } else if (!id_funcionario.equals(other.id_funcionario))
+        } else if (!idFuncionario.equals(other.idFuncionario))
             return false;
-        if (nome_completo == null) {
-            if (other.nome_completo != null)
+        if (nomeCompleto == null) {
+            if (other.nomeCompleto != null)
                 return false;
-        } else if (!nome_completo.equals(other.nome_completo))
+        } else if (!nomeCompleto.equals(other.nomeCompleto))
             return false;
         if (identificacao == null) {
             if (other.identificacao != null)
                 return false;
         } else if (!identificacao.equals(other.identificacao))
             return false;
-        if (email_institucional == null) {
-            if (other.email_institucional != null)
+        if (emailInstitucional == null) {
+            if (other.emailInstitucional != null)
                 return false;
-        } else if (!email_institucional.equals(other.email_institucional))
+        } else if (!emailInstitucional.equals(other.emailInstitucional))
             return false;
         if (telefone == null) {
             if (other.telefone != null)
@@ -115,13 +143,14 @@ public class Funcionario {
                 return false;
         } else if (!cargo.equals(other.cargo))
             return false;
-        if (tipo_vinculo == null) {
-            if (other.tipo_vinculo != null)
+        if (tipoVinculo == null) {
+            if (other.tipoVinculo != null)
                 return false;
-        } else if (!tipo_vinculo.equals(other.tipo_vinculo))
+        } else if (!tipoVinculo.equals(other.tipoVinculo))
             return false;
         return true;
     }
 
+    
     
 }

@@ -1,86 +1,121 @@
 package br.com.hugomachadodev.projeto_sala_de_aula.model;
 
-import java.util.UUID;
+import java.io.Serializable;
 
-public class Professor {
-    final UUID id_professor;
-    String nome_completo;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "tb_professor")
+public class Professor implements Serializable{
+    private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    Long idProfessor;
+    
+    @Column(name = "nome_completo", nullable = false, length = 100)
+    String nomeCompleto;
+    
+    @Column(name = "identificacao", nullable = false, length = 20)
     String identificacao;
-    String email_institucional;
+    
+    @Column(name = "email_institucional", nullable = false, length = 60)
+    String emailInstitucional;
+    
+    @Column(name = "telefone", nullable = false, length = 16)
     String telefone;
+    
+    @Column(name = "titulacao", nullable = false, length = 50)
     String titulacao;
-    String area_de_atuacao;
-    String regime_trabalho;
-    public Professor(String nome_completo, String identificacao, String email_institucional,
-            String telefone, String titulacao, String area_de_atuacao, String regime_trabalho) {
-        this.id_professor = UUID.randomUUID();
-        this.nome_completo = nome_completo;
-        this.identificacao = identificacao;
-        this.email_institucional = email_institucional;
-        this.telefone = telefone;
-        this.titulacao = titulacao;
-        this.area_de_atuacao = area_de_atuacao;
-        this.regime_trabalho = regime_trabalho;
+    
+    @Column(name = "area_atuaçao", nullable = false, length = 40)
+    String areaAtuacao;
+    
+    @Column(name = "regime_trabalho", nullable = false, length = 30)
+    String regimeTrabalho;
+
+    public Professor() {}
+
+    public Long getIdProfessor() {
+        return idProfessor;
     }
-    public UUID getId_professor() {
-        return id_professor;
+
+    public String getNomeCompleto() {
+        return nomeCompleto;
     }
-    public String getNome_completo() {
-        return nome_completo;
+
+    public void setNomeCompleto(String nomeCompleto) {
+        this.nomeCompleto = nomeCompleto;
     }
-    public void setNome_completo(String nome_completo) {
-        this.nome_completo = nome_completo;
-    }
+
     public String getIdentificacao() {
         return identificacao;
     }
+
     public void setIdentificacao(String identificacao) {
         this.identificacao = identificacao;
     }
-    public String getEmail_institucional() {
-        return email_institucional;
+
+    public String getEmailInstitucional() {
+        return emailInstitucional;
     }
-    public void setEmail_institucional(String email_institucional) {
-        this.email_institucional = email_institucional;
+
+    public void setEmailInstitucional(String emailInstitucional) {
+        this.emailInstitucional = emailInstitucional;
     }
+
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     public String getTitulacao() {
         return titulacao;
     }
+
     public void setTitulacao(String titulacao) {
         this.titulacao = titulacao;
     }
-    public String getArea_de_atuacao() {
-        return area_de_atuacao;
+
+    public String getAreaAtuacao() {
+        return areaAtuacao;
     }
-    public void setArea_de_atuacao(String area_de_atuacao) {
-        this.area_de_atuacao = area_de_atuacao;
+
+    public void setAreaAtuacao(String areaAtuacao) {
+        this.areaAtuacao = areaAtuacao;
     }
-    public String getRegime_trabalho() {
-        return regime_trabalho;
+
+    public String getRegimeTrabalho() {
+        return regimeTrabalho;
     }
-    public void setRegime_trabalho(String regime_trabalho) {
-        this.regime_trabalho = regime_trabalho;
+
+    public void setRegimeTrabalho(String regimeTrabalho) {
+        this.regimeTrabalho = regimeTrabalho;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((id_professor == null) ? 0 : id_professor.hashCode());
-        result = prime * result + ((nome_completo == null) ? 0 : nome_completo.hashCode());
+        result = prime * result + ((idProfessor == null) ? 0 : idProfessor.hashCode());
+        result = prime * result + ((nomeCompleto == null) ? 0 : nomeCompleto.hashCode());
         result = prime * result + ((identificacao == null) ? 0 : identificacao.hashCode());
-        result = prime * result + ((email_institucional == null) ? 0 : email_institucional.hashCode());
+        result = prime * result + ((emailInstitucional == null) ? 0 : emailInstitucional.hashCode());
         result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
         result = prime * result + ((titulacao == null) ? 0 : titulacao.hashCode());
-        result = prime * result + ((area_de_atuacao == null) ? 0 : area_de_atuacao.hashCode());
-        result = prime * result + ((regime_trabalho == null) ? 0 : regime_trabalho.hashCode());
+        result = prime * result + ((areaAtuacao == null) ? 0 : areaAtuacao.hashCode());
+        result = prime * result + ((regimeTrabalho == null) ? 0 : regimeTrabalho.hashCode());
         return result;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -90,25 +125,25 @@ public class Professor {
         if (getClass() != obj.getClass())
             return false;
         Professor other = (Professor) obj;
-        if (id_professor == null) {
-            if (other.id_professor != null)
+        if (idProfessor == null) {
+            if (other.idProfessor != null)
                 return false;
-        } else if (!id_professor.equals(other.id_professor))
+        } else if (!idProfessor.equals(other.idProfessor))
             return false;
-        if (nome_completo == null) {
-            if (other.nome_completo != null)
+        if (nomeCompleto == null) {
+            if (other.nomeCompleto != null)
                 return false;
-        } else if (!nome_completo.equals(other.nome_completo))
+        } else if (!nomeCompleto.equals(other.nomeCompleto))
             return false;
         if (identificacao == null) {
             if (other.identificacao != null)
                 return false;
         } else if (!identificacao.equals(other.identificacao))
             return false;
-        if (email_institucional == null) {
-            if (other.email_institucional != null)
+        if (emailInstitucional == null) {
+            if (other.emailInstitucional != null)
                 return false;
-        } else if (!email_institucional.equals(other.email_institucional))
+        } else if (!emailInstitucional.equals(other.emailInstitucional))
             return false;
         if (telefone == null) {
             if (other.telefone != null)
@@ -120,20 +155,18 @@ public class Professor {
                 return false;
         } else if (!titulacao.equals(other.titulacao))
             return false;
-        if (area_de_atuacao == null) {
-            if (other.area_de_atuacao != null)
+        if (areaAtuacao == null) {
+            if (other.areaAtuacao != null)
                 return false;
-        } else if (!area_de_atuacao.equals(other.area_de_atuacao))
+        } else if (!areaAtuacao.equals(other.areaAtuacao))
             return false;
-        if (regime_trabalho == null) {
-            if (other.regime_trabalho != null)
+        if (regimeTrabalho == null) {
+            if (other.regimeTrabalho != null)
                 return false;
-        } else if (!regime_trabalho.equals(other.regime_trabalho))
+        } else if (!regimeTrabalho.equals(other.regimeTrabalho))
             return false;
         return true;
     }
-
-    
 }
 
 
