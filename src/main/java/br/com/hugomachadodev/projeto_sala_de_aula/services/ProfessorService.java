@@ -1,65 +1,52 @@
 package br.com.hugomachadodev.projeto_sala_de_aula.services;
 
-import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.com.hugomachadodev.projeto_sala_de_aula.exception.ResourceNotFoundException;
 import br.com.hugomachadodev.projeto_sala_de_aula.model.Professor;
+import br.com.hugomachadodev.projeto_sala_de_aula.repositories.ProfessorRepository;
 
 @Service
 public class ProfessorService {
 
-    public Professor findbyId(String id){
-        Professor professor = new Professor(
-            "Professor da Silva - Busca por ID",
-            "89783823234",
-            "professor.silva@estudante.ifgoiano.edu.br",
-            "63999999999",
-            "Mestre",
-            "Tecnologia",
-            "40h"
-        );
+    @Autowired
+    ProfessorRepository professorRepository;
 
-        return professor;
+
+    public Professor findbyId(Long id){
+        return professorRepository.findById(id).orElseThrow(()->new ResourceNotFoundException("Não Há Registros para esse ID"));
     }
 
     public List<Professor> findAll(){
-        List<Professor> professores = new ArrayList<>();
-
-        for(int i = 0; i < 10; i++){
-            Professor professor = mockProfessores(i);
-            professores.add(professor);
-        }
-        return professores;
+        return professorRepository.findAll();
     }
 
     public Professor create(Professor professor) {
-		return professor;
+		return professorRepository.save(professor);
 	}
 
     public Professor update(Professor professor) {
-		return professor;
+        var entity = professorRepository.findById(professor.getIdProfessor()).orElseThrow(
+            ()->new ResourceNotFoundException("Não Há Registros para esse ID"));
+
+        entity.setNomeCompleto(professor.getNomeCompleto());
+        entity.setIdentificacao(professor.getIdentificacao());
+        entity.setEmailInstitucional(professor.getEmailInstitucional());
+        entity.setTelefone(professor.getIdentificacao());
+        entity.setTitulacao(professor.getTelefone());
+        entity.setAreaAtuacao(professor.getAreaAtuacao());
+        entity.setRegimeTrabalho(professor.getRegimeTrabalho());
+
+		return professorRepository.save(entity);
 	}
 
-    public Professor delete(Professor professor) {
-		return professor;
+    public void delete(Long id) {
+		var entity = professorRepository.findById(id).orElseThrow(
+            ()->new ResourceNotFoundException("Não Há Registros para esse ID"));
+        
+        professorRepository.delete(entity);
 	}
-
-
-
-    private Professor mockProfessores(int i) {
-        Professor professor = new Professor(
-            "Professor da Silva "+ i +" - Mock",
-            "89783823234",
-            "professor.silva@estudante.ifgoiano.edu.br",
-            "63999999999",
-            "Mestre",
-            "Tecnologia",
-            "40h"
-        );
-
-        return professor;
-    }
 }
-
