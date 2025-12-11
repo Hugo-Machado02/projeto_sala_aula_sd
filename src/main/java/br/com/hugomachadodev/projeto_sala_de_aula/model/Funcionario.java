@@ -1,8 +1,9 @@
 package br.com.hugomachadodev.projeto_sala_de_aula.model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Funcionario {
+public class Funcionario implements Serializable{
     final UUID id_funcionario;
     String nome_completo;
     String identificacao;
@@ -25,39 +26,51 @@ public class Funcionario {
     public UUID getId_funcionario() {
         return id_funcionario;
     }
+
     public String getNome_completo() {
         return nome_completo;
     }
+
     public void setNome_completo(String nome_completo) {
         this.nome_completo = nome_completo;
     }
+
     public String getIdentificacao() {
         return identificacao;
     }
+
     public void setIdentificacao(String identificacao) {
         this.identificacao = identificacao;
     }
+
     public String getEmail_institucional() {
         return email_institucional;
     }
+
     public void setEmail_institucional(String email_institucional) {
         this.email_institucional = email_institucional;
     }
+
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     public String getCargo() {
         return cargo;
     }
+
     public void setCargo(String cargo) {
         this.cargo = cargo;
     }
+
     public String getTipo_vinculo() {
         return tipo_vinculo;
     }
+
     public void setTipo_vinculo(String tipo_vinculo) {
         this.tipo_vinculo = tipo_vinculo;
     }
@@ -122,6 +135,4 @@ public class Funcionario {
             return false;
         return true;
     }
-
-    
 }

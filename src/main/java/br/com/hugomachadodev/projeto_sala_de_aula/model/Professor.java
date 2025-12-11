@@ -1,8 +1,10 @@
 package br.com.hugomachadodev.projeto_sala_de_aula.model;
 
+import java.io.Serializable;
 import java.util.UUID;
 
-public class Professor {
+public class Professor implements Serializable{
+    private static final long serialVersionUID = 1L;
     final UUID id_professor;
     String nome_completo;
     String identificacao;
@@ -11,6 +13,8 @@ public class Professor {
     String titulacao;
     String area_de_atuacao;
     String regime_trabalho;
+
+
     public Professor(String nome_completo, String identificacao, String email_institucional,
             String telefone, String titulacao, String area_de_atuacao, String regime_trabalho) {
         this.id_professor = UUID.randomUUID();
@@ -22,51 +26,67 @@ public class Professor {
         this.area_de_atuacao = area_de_atuacao;
         this.regime_trabalho = regime_trabalho;
     }
+
     public UUID getId_professor() {
         return id_professor;
     }
+
     public String getNome_completo() {
         return nome_completo;
     }
+
     public void setNome_completo(String nome_completo) {
         this.nome_completo = nome_completo;
     }
+
     public String getIdentificacao() {
         return identificacao;
     }
+
     public void setIdentificacao(String identificacao) {
         this.identificacao = identificacao;
     }
+
     public String getEmail_institucional() {
         return email_institucional;
     }
+
     public void setEmail_institucional(String email_institucional) {
         this.email_institucional = email_institucional;
     }
+
     public String getTelefone() {
         return telefone;
     }
+
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
     public String getTitulacao() {
         return titulacao;
     }
+
     public void setTitulacao(String titulacao) {
         this.titulacao = titulacao;
     }
+
     public String getArea_de_atuacao() {
         return area_de_atuacao;
     }
+
     public void setArea_de_atuacao(String area_de_atuacao) {
         this.area_de_atuacao = area_de_atuacao;
     }
+
     public String getRegime_trabalho() {
         return regime_trabalho;
     }
+
     public void setRegime_trabalho(String regime_trabalho) {
         this.regime_trabalho = regime_trabalho;
     }
+
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -81,6 +101,7 @@ public class Professor {
         result = prime * result + ((regime_trabalho == null) ? 0 : regime_trabalho.hashCode());
         return result;
     }
+    
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
