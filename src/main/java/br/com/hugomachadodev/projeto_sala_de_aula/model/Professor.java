@@ -1,12 +1,20 @@
 package br.com.hugomachadodev.projeto_sala_de_aula.model;
 
 import java.io.Serializable;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -38,6 +46,21 @@ public class Professor implements Serializable{
     
     @Column(name = "regime_trabalho", nullable = false, length = 30)
     String regimeTrabalho;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_departamento")
+    Departamento departamento;
+
+    @OneToMany(mappedBy = "professor", cascade = CascadeType.ALL)
+    List<Aluno> alunos;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "professor_funcionario",
+        joinColumns = @JoinColumn(name = "id_professor"),
+        inverseJoinColumns = @JoinColumn(name = "id_funcionario")
+    )
+    List<Funcionario> funcionarios;
 
     public Professor() {}
 
@@ -99,6 +122,30 @@ public class Professor implements Serializable{
 
     public void setRegimeTrabalho(String regimeTrabalho) {
         this.regimeTrabalho = regimeTrabalho;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
     }
 
     @Override

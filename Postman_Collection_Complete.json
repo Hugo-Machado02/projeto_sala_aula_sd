@@ -1,0 +1,515 @@
+{
+	"info": {
+		"_postman_id": "projeto-sala-aula-api",
+		"name": "Projeto Sala de Aula - API Complete",
+		"description": "Collection completa com todos os endpoints da API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Alunos",
+			"item": [
+				{
+					"name": "GET All Alunos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/alunos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "alunos"]
+						}
+					}
+				},
+				{
+					"name": "GET Aluno by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/alunos/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "alunos", "1"]
+						}
+					}
+				},
+				{
+					"name": "POST Create Aluno",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nomeCompleto\": \"João Silva\",\n  \"dataNascimento\": \"01/01/2000\",\n  \"identificacao\": \"12345678901\",\n  \"emailInstitucional\": \"joao@universidade.edu\",\n  \"telefone\": \"(11) 99999-9999\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/alunos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "alunos"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Aluno",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idAluno\": 1,\n  \"nomeCompleto\": \"João Silva Santos\",\n  \"dataNascimento\": \"01/01/2000\",\n  \"identificacao\": \"12345678901\",\n  \"emailInstitucional\": \"joao.santos@universidade.edu\",\n  \"telefone\": \"(11) 88888-8888\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/alunos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "alunos"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Aluno",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/alunos/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "alunos", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Departamentos",
+			"item": [
+				{
+					"name": "GET All Departamentos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/departamentos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "departamentos"]
+						}
+					}
+				},
+				{
+					"name": "GET Departamento by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/departamentos/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "departamentos", "1"]
+						}
+					}
+				},
+				{
+					"name": "POST Create Departamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Ciência da Computação\",\n  \"sigla\": \"CC\",\n  \"centroAcademico\": \"Centro de Tecnologia\",\n  \"chefeDepartamento\": \"Dr. Maria Silva\",\n  \"emailContato\": \"cc@universidade.edu\",\n  \"telefone\": \"(11) 3333-3333\",\n  \"localizacao\": \"Prédio A - 2º Andar\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/departamentos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "departamentos"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Departamento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idDepartamento\": 1,\n  \"nome\": \"Ciência da Computação\",\n  \"sigla\": \"CC\",\n  \"centroAcademico\": \"Centro de Tecnologia da Informação\",\n  \"chefeDepartamento\": \"Dr. Maria Silva Santos\",\n  \"emailContato\": \"cc@universidade.edu\",\n  \"telefone\": \"(11) 3333-4444\",\n  \"localizacao\": \"Prédio A - 3º Andar\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/departamentos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "departamentos"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Departamento",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/departamentos/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "departamentos", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Funcionarios",
+			"item": [
+				{
+					"name": "GET All Funcionarios",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/funcionarios",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "funcionarios"]
+						}
+					}
+				},
+				{
+					"name": "GET Funcionario by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/funcionarios/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "funcionarios", "1"]
+						}
+					}
+				},
+				{
+					"name": "POST Create Funcionario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Carlos Oliveira\",\n  \"cargo\": \"Secretário\",\n  \"email\": \"carlos@universidade.edu\",\n  \"telefone\": \"(11) 5555-5555\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/funcionarios",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "funcionarios"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Funcionario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idFuncionario\": 1,\n  \"nome\": \"Carlos Oliveira Santos\",\n  \"cargo\": \"Coordenador\",\n  \"email\": \"carlos.santos@universidade.edu\",\n  \"telefone\": \"(11) 5555-6666\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/funcionarios",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "funcionarios"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Funcionario",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/funcionarios/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "funcionarios", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Professores",
+			"item": [
+				{
+					"name": "GET All Professores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/professores",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "professores"]
+						}
+					}
+				},
+				{
+					"name": "GET Professor by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/professores/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "professores", "1"]
+						}
+					}
+				},
+				{
+					"name": "POST Create Professor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Dr. Ana Costa\",\n  \"especialidade\": \"Algoritmos\",\n  \"email\": \"ana.costa@universidade.edu\",\n  \"telefone\": \"(11) 7777-7777\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/professores",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "professores"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Professor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idProfessor\": 1,\n  \"nome\": \"Dr. Ana Costa Silva\",\n  \"especialidade\": \"Algoritmos e Estruturas de Dados\",\n  \"email\": \"ana.silva@universidade.edu\",\n  \"telefone\": \"(11) 7777-8888\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/professores",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "professores"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Professor",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/professores/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "professores", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Carteira de Estudante",
+			"item": [
+				{
+					"name": "GET All Carteiras",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/carteira",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "carteira"]
+						}
+					}
+				},
+				{
+					"name": "GET Carteira by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/carteira/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "carteira", "1"]
+						}
+					}
+				},
+				{
+					"name": "POST Create Carteira",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numeroCarteira\": \"2024001\",\n  \"dataEmissao\": \"01/03/2024\",\n  \"dataVencimento\": \"01/03/2025\",\n  \"status\": \"ATIVA\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/carteira",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "carteira"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Carteira",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idCarteira\": 1,\n  \"numeroCarteira\": \"2024001\",\n  \"dataEmissao\": \"01/03/2024\",\n  \"dataVencimento\": \"01/03/2026\",\n  \"status\": \"RENOVADA\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/carteira",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "carteira"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Carteira",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/carteira/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "carteira", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Universidade",
+			"item": [
+				{
+					"name": "GET All Universidades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/universidade",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "universidade"]
+						}
+					}
+				},
+				{
+					"name": "GET Universidade by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/universidade/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "universidade", "1"]
+						}
+					}
+				},
+				{
+					"name": "POST Create Universidade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Universidade Federal de Tecnologia\",\n  \"sigla\": \"UFT\",\n  \"endereco\": \"Rua das Universidades, 123\",\n  \"cidade\": \"São Paulo\",\n  \"estado\": \"SP\",\n  \"cep\": \"01234-567\",\n  \"telefone\": \"(11) 1111-1111\",\n  \"email\": \"contato@uft.edu.br\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/universidade",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "universidade"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Universidade",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idUniversidade\": 1,\n  \"nome\": \"Universidade Federal de Tecnologia Avançada\",\n  \"sigla\": \"UFTA\",\n  \"endereco\": \"Rua das Universidades, 456\",\n  \"cidade\": \"São Paulo\",\n  \"estado\": \"SP\",\n  \"cep\": \"01234-567\",\n  \"telefone\": \"(11) 1111-2222\",\n  \"email\": \"contato@ufta.edu.br\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/universidade",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "universidade"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Universidade",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/api/universidade/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "universidade", "1"]
+						}
+					}
+				}
+			]
+		}
+	]
+}

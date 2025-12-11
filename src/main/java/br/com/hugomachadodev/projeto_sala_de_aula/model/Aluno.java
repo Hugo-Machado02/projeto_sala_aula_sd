@@ -1,12 +1,19 @@
 package br.com.hugomachadodev.projeto_sala_de_aula.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -32,6 +39,25 @@ public class Aluno implements Serializable{
 
     @Column(name = "telefone", nullable = false, length = 16)
     String telefone;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_professor", nullable = false)
+    Professor professor;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_departamento", nullable = false)
+    Departamento departamento;
+
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "aluno_funcionario",
+        joinColumns = @JoinColumn(name = "id_aluno"),
+        inverseJoinColumns = @JoinColumn(name = "id_funcionario")
+    )
+    List<Funcionario> funcionarios;
+
+    @OneToOne(mappedBy = "aluno")
+    CarteiraDeEstudante carteiraDeEstudante;
 
     public Aluno() {}
 
@@ -77,6 +103,38 @@ public class Aluno implements Serializable{
 
     public void setTelefone(String telefone) {
         this.telefone = telefone;
+    }
+
+    public Professor getProfessor() {
+        return professor;
+    }
+
+    public void setProfessor(Professor professor) {
+        this.professor = professor;
+    }
+
+    public Departamento getDepartamento() {
+        return departamento;
+    }
+
+    public void setDepartamento(Departamento departamento) {
+        this.departamento = departamento;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public CarteiraDeEstudante getCarteiraDeEstudante() {
+        return carteiraDeEstudante;
+    }
+
+    public void setCarteiraDeEstudante(CarteiraDeEstudante carteiraDeEstudante) {
+        this.carteiraDeEstudante = carteiraDeEstudante;
     }
 
     @Override

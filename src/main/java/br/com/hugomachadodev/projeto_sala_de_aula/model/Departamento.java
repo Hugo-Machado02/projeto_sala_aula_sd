@@ -1,12 +1,16 @@
 package br.com.hugomachadodev.projeto_sala_de_aula.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -38,6 +42,19 @@ public class Departamento implements Serializable{
     
     @Column(name = "localizacao", nullable = false, length = 150)
     String localizacao;
+
+    @ManyToOne
+    @JoinColumn(name = "id_universidade")
+    Universidade universidade;
+
+    @OneToMany(mappedBy = "departamento")
+    List<Professor> professores;
+
+    @OneToMany(mappedBy = "departamento")
+    List<Funcionario> funcionarios;
+
+    @OneToMany(mappedBy = "departamento")
+    List<Aluno> alunos;
 
     public Departamento() {}
 
@@ -99,6 +116,38 @@ public class Departamento implements Serializable{
 
     public void setLocalizacao(String localizacao) {
         this.localizacao = localizacao;
+    }
+
+    public Universidade getUniversidade() {
+        return universidade;
+    }
+
+    public void setUniversidade(Universidade universidade) {
+        this.universidade = universidade;
+    }
+
+    public List<Professor> getProfessores() {
+        return professores;
+    }
+
+    public void setProfessores(List<Professor> professores) {
+        this.professores = professores;
+    }
+
+    public List<Funcionario> getFuncionarios() {
+        return funcionarios;
+    }
+
+    public void setFuncionarios(List<Funcionario> funcionarios) {
+        this.funcionarios = funcionarios;
+    }
+
+    public List<Aluno> getAlunos() {
+        return alunos;
+    }
+
+    public void setAlunos(List<Aluno> alunos) {
+        this.alunos = alunos;
     }
 
     @Override

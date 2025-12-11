@@ -1,0 +1,96 @@
+// 1. POST Universidade - /api/universidade/v1
+{
+  "nomeUniversidade": "Universidade Federal do Brasil",
+  "siglaUniversidade": "UFB",
+  "tipo": "pública"
+}
+
+// 2. POST Departamento - /api/departamento/v1
+{
+  "nome": "Ciência da Computação",
+  "sigla": "CC",
+  "centroAcademico": "Centro de Tecnologia",
+  "chefeDepartamento": "Dr. João Silva",
+  "emailContato": "cc@ufb.edu.br",
+  "telefone": "(11) 99999-9999",
+  "localizacao": "Bloco A - Sala 101",
+  "universidade": {
+    "idUniversidade": 1
+  }
+}
+
+// 3. POST Professor - /api/professor/v1
+{
+  "nomeCompleto": "Dr. Maria Santos",
+  "identificacao": "12345678901",
+  "emailInstitucional": "maria.santos@ufb.edu.br",
+  "telefone": "(11) 88888-8888",
+  "titulacao": "Doutorado",
+  "areaAtuacao": "Inteligência Artificial",
+  "regimeTrabalho": "Dedicação Exclusiva",
+  "departamento": {
+    "idDepartamento": 1
+  }
+}
+
+// 4. POST Funcionario - /api/funcionario/v1
+{
+  "nomeCompleto": "Carlos Oliveira",
+  "identificacao": "98765432100",
+  "emailInstitucional": "carlos.oliveira@ufb.edu.br",
+  "telefone": "(11) 77777-7777",
+  "cargo": "Técnico em Informática",
+  "tipoVinculo": "Efetivo",
+  "departamento": {
+    "idDepartamento": 1
+  }
+}
+
+// 5. POST Aluno - /api/aluno/v1
+{
+  "nomeCompleto": "Ana Paula Costa",
+  "dataNascimento": "2000-05-15",
+  "identificacao": "11122233344",
+  "emailInstitucional": "ana.costa@aluno.ufb.edu.br",
+  "telefone": "(11) 66666-6666",
+  "professor": {
+    "idProfessor": 1
+  },
+  "departamento": {
+    "idDepartamento": 1
+  }
+}
+
+// 6. POST Carteira - /api/carteira
+{
+  "numeroCarteira": "2024001001",
+  "dataEmissao": "2024-01-15",
+  "dataValidade": "2028-12-31",
+  "aluno": {
+    "idAluno": 1
+  }
+}
+
+// ENDPOINTS GET:
+// GET /api/universidade/v1
+// GET /api/departamento/v1
+// GET /api/professor/v1
+// GET /api/funcionario/v1
+// GET /api/aluno/v1
+// GET /api/carteira
+
+// ENDPOINTS GET BY ID:
+// GET /api/universidade/v1/{id}
+// GET /api/departamento/v1/{id}
+// GET /api/professor/v1/{id}
+// GET /api/funcionario/v1/{id}
+// GET /api/aluno/v1/{id}
+// GET /api/carteira/{id}
+
+// ENDPOINTS DELETE:
+// DELETE /api/universidade/v1/{id}
+// DELETE /api/departamento/v1/{id}
+// DELETE /api/professor/v1/{id}
+// DELETE /api/funcionario/v1/{id}
+// DELETE /api/aluno/v1/{id}
+// DELETE /api/carteira/{id}

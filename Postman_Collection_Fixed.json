@@ -1,0 +1,496 @@
+{
+	"info": {
+		"name": "Projeto Sala de Aula - API Tests",
+		"description": "Coleção completa para testar todos os endpoints da aplicação",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "Universidade",
+			"item": [
+				{
+					"name": "POST Create Universidade",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nomeUniversidade\": \"Universidade Federal do Brasil\",\n  \"siglaUniversidade\": \"UFB\",\n  \"tipo\": \"pública\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/universidade",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "universidade"]
+						}
+					}
+				},
+				{
+					"name": "GET All Universidades",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/universidade",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "universidade"]
+						}
+					}
+				},
+				{
+					"name": "GET Universidade by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/universidade/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "universidade", "1"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Universidade",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idUniversidade\": 1,\n  \"nomeUniversidade\": \"Universidade Federal do Brasil - Atualizada\",\n  \"siglaUniversidade\": \"UFB\",\n  \"tipo\": \"pública\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/universidade",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "universidade"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Universidade",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/universidade/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "universidade", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Departamento",
+			"item": [
+				{
+					"name": "POST Create Departamento",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Ciência da Computação\",\n  \"sigla\": \"CC\",\n  \"centroAcademico\": \"Centro de Tecnologia\",\n  \"chefeDepartamento\": \"Dr. João Silva\",\n  \"emailContato\": \"cc@ufb.edu.br\",\n  \"telefone\": \"(11) 99999-9999\",\n  \"localizacao\": \"Bloco A - Sala 101\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/departamentos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "departamentos"]
+						}
+					}
+				},
+				{
+					"name": "GET All Departamentos",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/departamentos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "departamentos"]
+						}
+					}
+				},
+				{
+					"name": "GET Departamento by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/departamentos/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "departamentos", "1"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Departamento",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idDepartamento\": 1,\n  \"nome\": \"Ciência da Computação - Atualizado\",\n  \"sigla\": \"CC\",\n  \"centroAcademico\": \"Centro de Tecnologia\",\n  \"chefeDepartamento\": \"Dr. João Silva\",\n  \"emailContato\": \"cc@ufb.edu.br\",\n  \"telefone\": \"(11) 99999-9999\",\n  \"localizacao\": \"Bloco A - Sala 101\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/departamentos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "departamentos"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Departamento",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/departamentos/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "departamentos", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Professor",
+			"item": [
+				{
+					"name": "POST Create Professor",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nomeCompleto\": \"Dr. Maria Santos\",\n  \"identificacao\": \"12345678901\",\n  \"emailInstitucional\": \"maria.santos@ufb.edu.br\",\n  \"telefone\": \"(11) 88888-8888\",\n  \"titulacao\": \"Doutorado\",\n  \"areaAtuacao\": \"Inteligência Artificial\",\n  \"regimeTrabalho\": \"Dedicação Exclusiva\",\n  \"departamento\": {\n    \"idDepartamento\": 1\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/professores",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "professores"]
+						}
+					}
+				},
+				{
+					"name": "GET All Professores",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/professores",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "professores"]
+						}
+					}
+				},
+				{
+					"name": "GET Professor by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/professores/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "professores", "1"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Professor",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idProfessor\": 1,\n  \"nomeCompleto\": \"Dr. Maria Santos Silva\",\n  \"identificacao\": \"12345678901\",\n  \"emailInstitucional\": \"maria.santos@ufb.edu.br\",\n  \"telefone\": \"(11) 88888-8888\",\n  \"titulacao\": \"Doutorado\",\n  \"areaAtuacao\": \"Inteligência Artificial\",\n  \"regimeTrabalho\": \"Dedicação Exclusiva\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/professores",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "professores"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Professor",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/professores/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "professores", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Funcionario",
+			"item": [
+				{
+					"name": "POST Create Funcionario",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nomeCompleto\": \"Carlos Oliveira\",\n  \"identificacao\": \"98765432100\",\n  \"emailInstitucional\": \"carlos.oliveira@ufb.edu.br\",\n  \"telefone\": \"(11) 77777-7777\",\n  \"cargo\": \"Técnico em Informática\",\n  \"tipoVinculo\": \"Efetivo\",\n  \"departamento\": {\n    \"idDepartamento\": 1\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/funcionarios",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "funcionarios"]
+						}
+					}
+				},
+				{
+					"name": "GET All Funcionarios",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/funcionarios",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "funcionarios"]
+						}
+					}
+				},
+				{
+					"name": "GET Funcionario by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/funcionarios/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "funcionarios", "1"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Funcionario",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idFuncionario\": 1,\n  \"nomeCompleto\": \"Carlos Oliveira Santos\",\n  \"identificacao\": \"98765432100\",\n  \"emailInstitucional\": \"carlos.oliveira@ufb.edu.br\",\n  \"telefone\": \"(11) 77777-7777\",\n  \"cargo\": \"Técnico em Informática\",\n  \"tipoVinculo\": \"Efetivo\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/funcionarios",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "funcionarios"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Funcionario",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/funcionarios/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "funcionarios", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Aluno",
+			"item": [
+				{
+					"name": "POST Create Aluno",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nomeCompleto\": \"Ana Paula Costa\",\n  \"dataNascimento\": \"2000-05-15\",\n  \"identificacao\": \"11122233344\",\n  \"emailInstitucional\": \"ana.costa@aluno.ufb.edu.br\",\n  \"telefone\": \"(11) 66666-6666\",\n  \"professor\": {\n    \"idProfessor\": 1\n  },\n  \"departamento\": {\n    \"idDepartamento\": 1\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/alunos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "alunos"]
+						}
+					}
+				},
+				{
+					"name": "GET All Alunos",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/alunos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "alunos"]
+						}
+					}
+				},
+				{
+					"name": "GET Aluno by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/alunos/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "alunos", "1"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Aluno",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idAluno\": 1,\n  \"nomeCompleto\": \"Ana Paula Costa Silva\",\n  \"dataNascimento\": \"2000-05-15\",\n  \"identificacao\": \"11122233344\",\n  \"emailInstitucional\": \"ana.costa@aluno.ufb.edu.br\",\n  \"telefone\": \"(11) 66666-6666\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/alunos",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "alunos"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Aluno",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/alunos/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "alunos", "1"]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Carteira de Estudante",
+			"item": [
+				{
+					"name": "POST Create Carteira",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"numeroCarteira\": \"2024001001\",\n  \"dataEmissao\": \"2024-01-15\",\n  \"dataValidade\": \"2028-12-31\",\n  \"aluno\": {\n    \"idAluno\": 1\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/carteira",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "carteira"]
+						}
+					}
+				},
+				{
+					"name": "GET All Carteiras",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/carteira",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "carteira"]
+						}
+					}
+				},
+				{
+					"name": "GET Carteira by ID",
+					"request": {
+						"method": "GET",
+						"url": {
+							"raw": "{{baseUrl}}/api/carteira/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "carteira", "1"]
+						}
+					}
+				},
+				{
+					"name": "PUT Update Carteira",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"idCarteira\": 1,\n  \"numeroCarteira\": \"2024001001-UPD\",\n  \"dataEmissao\": \"2024-01-15\",\n  \"dataValidade\": \"2028-12-31\",\n  \"aluno\": {\n    \"idAluno\": 1\n  }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/api/carteira",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "carteira"]
+						}
+					}
+				},
+				{
+					"name": "DELETE Carteira",
+					"request": {
+						"method": "DELETE",
+						"url": {
+							"raw": "{{baseUrl}}/api/carteira/1",
+							"host": ["{{baseUrl}}"],
+							"path": ["api", "carteira", "1"]
+						}
+					}
+				}
+			]
+		}
+	]
+}
